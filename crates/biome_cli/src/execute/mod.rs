@@ -5,6 +5,7 @@ mod std_in;
 mod traverse;
 
 use crate::cli_options::CliOptions;
+use crate::commands::MigrateSubCommand;
 use crate::execute::migrate::MigratePayload;
 use crate::execute::traverse::traverse;
 use crate::{CliDiagnostic, CliSession};
@@ -116,8 +117,7 @@ pub(crate) enum TraversalMode {
         configuration_file_path: PathBuf,
         /// The path to `biome.json`
         configuration_directory_path: PathBuf,
-        /// Migrate from prettier
-        prettier: bool,
+        sub_command: Option<MigrateSubCommand>,
     },
 }
 
@@ -303,7 +303,7 @@ pub(crate) fn execute_mode(
         write,
         configuration_file_path,
         configuration_directory_path,
-        prettier,
+        sub_command,
     } = mode.traversal_mode
     {
         let payload = MigratePayload {
@@ -312,7 +312,7 @@ pub(crate) fn execute_mode(
             configuration_file_path,
             configuration_directory_path,
             verbose: cli_options.verbose,
-            prettier,
+            sub_command,
         };
         migrate::run(payload)
     } else {

@@ -26,7 +26,7 @@ mod manifest_services;
 pub mod options;
 mod react;
 mod registry;
-mod semantic_analyzers;
+pub mod semantic_analyzers;
 mod semantic_services;
 mod suppression_action;
 mod syntax;

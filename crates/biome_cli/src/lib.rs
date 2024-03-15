@@ -193,14 +193,7 @@ impl<'app> CliSession<'app> {
                 cli_options,
                 write,
                 sub_command,
-            } => commands::migrate::migrate(
-                self,
-                cli_options,
-                write,
-                sub_command
-                    .map(|sub_command| sub_command.is_prettier())
-                    .unwrap_or_default(),
-            ),
+            } => commands::migrate::migrate(self, cli_options, write, sub_command),
             BiomeCommand::RunServer {
                 stop_on_disconnect,
                 config_path,

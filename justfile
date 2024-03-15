@@ -22,6 +22,7 @@ upgrade-tools:
 gen:
   cargo codegen all
   cargo codegen-configuration
+  cargo codegen-eslint-migrate
   cargo lintdoc
   just gen-bindings
   just gen-web
